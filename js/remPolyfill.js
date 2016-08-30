@@ -99,6 +99,8 @@
 	handler = function() {
 		if (!navigator.viewportUnits) {
 			createCSSClass('html.rem-polyfill', 'font-size:'+(getPageSize()[2]/100)+'px;');
+		} else {
+			createCSSClass('html.rem-polyfill', 'font-size:1vw;');
 		}//end if
 	};
 
@@ -111,7 +113,6 @@
 	};
 
 	init = function() {
-		createCSSClass('html.rem-polyfill', 'font-size:1vw;');
 		dRoot = document.querySelector('html');
 
 		//properties
@@ -151,7 +152,7 @@
 
 					if (remPolyfill) {
 						if (!dRoot.classList.contains('rem-polyfill')) dRoot.classList.add('rem-polyfill');
-						if (!this.viewportUnits) window.addEventListener('resize', handler, false);
+						window.addEventListener('resize', handler, false);
 						handler();
 					} else {
 						if (dRoot.classList.contains('rem-polyfill')) dRoot.classList.remove('rem-polyfill');
