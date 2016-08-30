@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" x-frame-options="sameorigin">
+<head>
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+<meta http-equiv="PRAGMA" content="NO-CACHE">
+<meta http-equiv="Expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+<meta http-equiv="imagetoolbar" content="no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="mobile web 一直都是這些年來的新興的玩意兒, 不過由於 APP 的排擠效應, 以及 mobile browser 的 performance issue, 所以它總是很容易就被冷落到一旁, 為了符合各式各樣的 resolution, fluid design 更是順應此趨勢而大放異彩, 其中 font-size 的設定更是一門學問, 也因此 viewport unit 受到眾多 developers 的親賴, 不過並不是所有的 mobile browser 都可以 support 這個單位, 為了讓絕大部分的 mobile web visitor 有更好的視覺體驗, 筆者採納了阿里巴巴 mobile web 的 design guideline: 1rem = 1vw 的做法, 撰寫了一個 remPolyfill 來讓這些頑強的 Android browser 有個依歸, 透過簡易的設定便可以讓當前 page 擁有 flex 的 font-size 系統, 透過本分享, 相信更容易了解其開發初衷與應用方法喔!">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mei">
+<meta name="twitter:creator" content="@mei">
+<meta name="twitter:title" content="remPolyfill Prototype">
+<meta name="twitter:description" content="mobile web 一直都是這些年來的新興的玩意兒, 不過由於 APP 的排擠效應, 以及 mobile browser 的 performance issue, 所以它總是很容易就被冷落到一旁, 為了符合各式各樣的 resolution, fluid design 更是順應此趨勢而大放異彩, 其中 font-size 的設定更是一門學問, 也因此 viewport unit 受到眾多 developers 的親賴, 不過並不是所有的 mobile browser 都可以 support 這個單位, 為了讓絕大部分的 mobile web visitor 有更好的視覺體驗, 筆者採納了阿里巴巴 mobile web 的 design guideline: 1rem = 1vw 的做法, 撰寫了一個 remPolyfill 來讓這些頑強的 Android browser 有個依歸, 透過簡易的設定便可以讓當前 page 擁有 flex 的 font-size 系統, 透過本分享, 相信更容易了解其開發初衷與應用方法喔!">
+<meta name="twitter:image:src" content="http://mei.homin.com.tw/img/preview/remPolyfill.png">
+<meta property="og:title" content="remPolyfill Prototype">
+<meta property="og:site_name" content="mei">
+<meta property="og:description" content="mobile web 一直都是這些年來的新興的玩意兒, 不過由於 APP 的排擠效應, 以及 mobile browser 的 performance issue, 所以它總是很容易就被冷落到一旁, 為了符合各式各樣的 resolution, fluid design 更是順應此趨勢而大放異彩, 其中 font-size 的設定更是一門學問, 也因此 viewport unit 受到眾多 developers 的親賴, 不過並不是所有的 mobile browser 都可以 support 這個單位, 為了讓絕大部分的 mobile web visitor 有更好的視覺體驗, 筆者採納了阿里巴巴 mobile web 的 design guideline: 1rem = 1vw 的做法, 撰寫了一個 remPolyfill 來讓這些頑強的 Android browser 有個依歸, 透過簡易的設定便可以讓當前 page 擁有 flex 的 font-size 系統, 透過本分享, 相信更容易了解其開發初衷與應用方法喔!">
+<meta property="og:image" content="http://mei.homin.com.tw/img/preview/remPolyfill.png">
+<title>remPolyfill Prototype</title>
+<link rel="dns-prefetch" href="//mei.homin.com.tw">
+<link rel="canonical" href="http://mei.homin.com.tw/remPolyfillPrototype.html">
+<link rel="stylesheet" href="css/cssbase.css">
+<link rel="stylesheet" href="css/adornFormElements.css">
+<link rel="stylesheet" href="css/rem-polyfill.css">
+<script src="js/pageRender.js" data-source="js/remPolyfill.js&js/remPolyfillInit.js"></script>
+</head>
+
+<body>
+<header id="hd" role="banner">
+	<h1>remPolyfill Prototype</h1>
+</header>
+
+<main id="bd" role="main">
+	<p>remPolyfill project.</p>
+	<a href="#trigger4remPolyfill" class="trigger">OFF</a>
+</main>
+
+<footer id="ft">
+	<small role="contentinfo">Powered by mei's studio.</small>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "CreativeWork",
+  "name": "remPolyfill Prototype",
+  "url": "http://mei.homin.com.tw/remPolyfillPrototype.html",
+  "description": "mobile web 一直都是這些年來的新興的玩意兒, 不過由於 APP 的排擠效應, 以及 mobile browser 的 performance issue, 所以它總是很容易就被冷落到一旁, 為了符合各式各樣的 resolution, fluid design 更是順應此趨勢而大放異彩, 其中 font-size 的設定更是一門學問, 也因此 viewport unit 受到眾多 developers 的親賴, 不過並不是所有的 mobile browser 都可以 support 這個單位, 為了讓絕大部分的 mobile web visitor 有更好的視覺體驗, 筆者採納了阿里巴巴 mobile web 的 design guideline: 1rem = 1vw 的做法, 撰寫了一個 remPolyfill 來讓這些頑強的 Android browser 有個依歸, 透過簡易的設定便可以讓當前 page 擁有 flex 的 font-size 系統, 透過本分享, 相信更容易了解其開發初衷與應用方法喔!",
+  "image": "http://mei.homin.com.tw/img/preview/remPolyfill.png",
+  "author": {
+	  "@type": "Person",
+	  "name": "Paul Li",
+	  "jobTitle": "Front End engineer",
+	  "affiliation": "mei's studio",
+	  "additionalName": "mei",
+	  "url": "https://www.facebook.com/mei.studio.li",
+	  "image": "https://graph.facebook.com/mei.studio.li/picture",
+	  "brand": "mei's studio",
+	  "familyName": "Li",
+	  "gender": "M",
+	  "givenName": "Paul",
+	  "owns": "mei's studio",
+	  "worksFor": "Yahoo",
+	  "description": "People who loves all front end skills"
+  },
+  "dateCreated": "2016-08-30",
+  "datePublished": "2016-08-30",
+  "genre": "mobile web",
+  "keywords": "mobileWeb,remPolyfill"
+}
+</script>
+</body>
+</html>
